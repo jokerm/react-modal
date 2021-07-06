@@ -1,4 +1,4 @@
-import React, { ReactChildren, ReactElement, ReactNode, useMemo } from "react";
+import React, { ReactElement, useMemo } from "react";
 
 interface IChildProps {
   [key: string]: ReactElement;
@@ -11,7 +11,7 @@ const useChildProps = (
   return useMemo(() => {
     const whiteList = new Set(elementsAllowed);
     return children.reduce<IChildProps>((childProps, child) => {
-      if (whiteList.has(child?.type as string) == false) {
+      if (whiteList.has(child?.type as string) === false) {
         throw Error(`element <${child.type}> is not supported`);
       }
 
@@ -19,7 +19,7 @@ const useChildProps = (
 
       return childProps;
     }, {});
-  }, [children]);
+  }, [children, elementsAllowed]);
 };
 
 export default useChildProps;

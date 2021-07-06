@@ -18,7 +18,7 @@ function App() {
       {isOpen && (
         <ModalDialog showCloseBtn={false}>
           <header>Modal Title</header>
-          <section>Modal Body</section>
+          <body>Modal Body</body>
           <footer>
             <button onClick={toggleModal}>Save</button>
             <button onClick={toggleModal}>Cancel</button>

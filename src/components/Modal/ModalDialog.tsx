@@ -10,19 +10,19 @@ interface IModalProps {
   children: ReactElement[];
 }
 
-const allowedElements = ["header", "section", "footer"];
+const allowedElements = ["header", "body", "footer"];
 
 export default function Modal({
   showCloseBtn,
   children,
 }: PropsWithChildren<IModalProps>) {
-  const { header, section, footer } = useChildProps(children, allowedElements);
+  const { header, body, footer } = useChildProps(children, allowedElements);
 
   return (
     <ModalBase isOpen={true}>
-      <ModalHeader closeBtn={showCloseBtn} {...header} />
-      <ModalBody {...section} />
-      <ModalFooter {...footer} />
+      {header && <ModalHeader closeBtn={showCloseBtn} {...header} />}
+      {body && <ModalBody {...body} />}
+      {footer && <ModalFooter {...footer} />}
     </ModalBase>
   );
 }
