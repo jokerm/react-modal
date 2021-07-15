@@ -1,7 +1,7 @@
-import React, { ReactElement, useMemo } from "react";
+import { PropsWithChildren, ReactElement, useMemo } from "react";
 
 interface IChildProps {
-  [key: string]: ReactElement;
+  [key: string]: PropsWithChildren<unknown>;
 }
 
 const useChildProps = (

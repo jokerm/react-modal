@@ -1,18 +1,20 @@
 import React, { PropsWithChildren } from "react";
 
 interface IModalHeaderProps {
-  closeBtn: boolean;
+  closeBtn: JSX.Element | null;
 }
 
 export default function ModalHeader({
   closeBtn,
   children,
   ...props
-}: PropsWithChildren<IModalHeaderProps>) {
+}: PropsWithChildren<
+  IModalHeaderProps & React.HTMLAttributes<HTMLDivElement>
+>) {
   return (
     <div {...props}>
       {children}
-      {closeBtn && <button>X</button>}
+      {closeBtn}
     </div>
   );
 }
